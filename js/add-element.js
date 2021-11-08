@@ -9,6 +9,7 @@ $('.hot').each(function () {
 });
 // traverse the elements
 $('#one').next().next().text('milk');
+  //$('#one').remove();
 // add a new element by clicking the plus sign
 $('#todo').append('<li>candy</li>');
 $('#add').click(addElement);
@@ -26,6 +27,9 @@ function addElement() {
     var items = $(this).val();
     // replace input box by the text
     $(this).parent().text(items);
+
+    //click the new list item will change style
+    $('li').click(changeStyle);
   });
 }
 
@@ -37,10 +41,12 @@ function changeStyle() {
   if ($(this).hasClass('cool')) {
     $(this).removeClass('cool');
     $(this).addClass('complete');
-  } else if ($(this).hasClass('complete')) {
+  } 
+  else if ($(this).hasClass('complete')) {
     $(this).removeClass('complete');
     $(this).addClass('cool');
-  } else {
+  } 
+  else {
     $(this).addClass('complete');
   }
 }
@@ -49,5 +55,5 @@ function changeStyle() {
 document.getElementById('remove').addEventListener('click', removeElement);
 
 function removeElement() {
-  // remove the marked elements  -- element with style complete
+  $('li.complete').remove();
 }
